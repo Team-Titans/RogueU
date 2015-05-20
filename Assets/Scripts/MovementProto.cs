@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class MovementProto : MonoBehaviour
 {
-
 	private float TileH;
 	private float TileW;
 	
