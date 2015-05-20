@@ -11,14 +11,19 @@ namespace Assets.Scripts
 	{
 
 		//TO ADD: Carbon, Item
+		public int carbon;
+		public int item;
 
-		public int TrapType;
-		public bool IsDark;
-		public bool IsTrapSet;
-		public bool IsTrapVisible;
-		public bool HasChanged;
+		public int trapType;
+		public bool isDark;
+		public bool isTrapSet;
+		public bool isTrapVisible;
+		public bool hasChanged;
 		public Tile()
 		{
+			Carbon = 0;
+			Item = 0;
+
 			TrapType = 0;
 			IsDark = false;
 			IsTrapSet = false;
