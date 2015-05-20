@@ -5,17 +5,27 @@ using System.Collections.Generic;
 
 public class panelGrid : MonoBehaviour {
 
-    public GameObject wall;
-    public GameObject empty;
-    //public Sprite s;
+    // GameObjects that are stored as prefabs from unity
+    public GameObject empty;    // 0
+    public GameObject wall;     // 1
+    public GameObject floor;    // 2
+    public GameObject door;     // 3
+    public GameObject stairs;   // 4
+    public GameObject path;     // 5
 
-    //public GameObject panelUI;
+    // create a dictionary to match numbers with gameobjects
+    public Dictionary<int, GameObject> objectID = new Dictionary<int, GameObject>(); 
+
+    // create 2D array to store grid tiles gGameObjects
+    public GameObject [,] gridObjects = new GameObject [20,80];
 
 	// Use this for initialization
 	void Start ()
     {
-        addImages();
+        AddImages();
+        CreateDictionary();
 
+        //for debugging purposes
         foreach (RectTransform child in gameObject.GetComponentsInChildren<RectTransform>())
         {
             Debug.Log(child.position.x + child.name);
@@ -24,38 +34,68 @@ public class panelGrid : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-
-        }
 	}
 
-    void addImages()
+    void AddImages()
     {
+        // get panels width and height
         RectTransform rec = gameObject.GetComponent<RectTransform>();
-        GridLayoutGroup gridLayout = gameObject.GetComponent<GridLayoutGroup>();
         float height = rec.rect.height;
         float width =  rec.rect.width;
-        for (int i = 0; i < height/gridLayout.cellSize.y; i++)
+
+        // get the cellsize of the grid
+        GridLayoutGroup gridLayout = gameObject.GetComponent<GridLayoutGroup>();
+        float xPos = gridLayout.cellSize.x;
+        float yPos = gridLayout.cellSize.y;
+
+        for (int i = 0; i < height/ yPos; i++)
         {
-            for (int j = 0; j < width/gridLayout.cellSize.x; j++)
+            for (int j = 0; j < width/ xPos; j++)
             {
-                //List<List<GameObject>> tileArray = new List<List<GameObject>>();
-                //GameObject obj = tileArray[j][i];
                 GameObject newTile;
                 if (j == 0 || j == 7 || i == 0 || i == 2)
                 {
-                    newTile = Instantiate(wall);
+                    // make a gameObject with sprite wall
+                    newTile = Instantiate(path);
                 }
                 else
                 {
+                    // make a gameObject with sprite empty
                     newTile = Instantiate(empty);
                 }
-                newTile.name = gameObject.name + "item at(" + i + ", " + j + ")";
-                newTile.transform.SetParent(gameObject.transform);
-                //Instantiate(tile, new Vector3(i * 5 - 20, j * 5 - 20, 0), transform.rotation);
 
+                // set obj name 
+                newTile.name = gameObject.name + "item at(" + j + ", " + i + ")";
+                // sets the panel(gameObject) as the parent of the newTile
+                newTile.transform.SetParent(gameObject.transform);
+
+                // store data in 2D array
+                gridObjects[i, j] = newTile;
             }
+        }
+    }
+
+    void CreateDictionary()
+    {
+        objectID.Add(0, empty);
+        objectID.Add(1, wall);
+        objectID.Add(2, floor);
+        objectID.Add(3, door);
+        objectID.Add(4, stairs);
+        objectID.Add(5, path);
+    }
+
+    class Tile
+    {
+        public int x, y, id;
+    };
+
+    void changeImages(List<Tile> tList)
+    {
+        // get all list
+        foreach(Tile t in tList)
+        {
+            gridObjects[t.x, t.y] = objectID[t.id];
         }
     }
 }

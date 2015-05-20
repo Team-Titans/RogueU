@@ -11,7 +11,7 @@ GameObject:
   - 222: {fileID: 22267330}
   - 114: {fileID: 11452520}
   m_Layer: 5
-  m_Name: emptyPref
+  m_Name: stairsPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: dcc7ef6fd54309c4499a7c941d57bdb7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 45a14720043b7394189878050da6f3aa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
