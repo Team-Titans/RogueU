@@ -2,21 +2,20 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Classes
 {
 	//Inherits from  Carbon
-	class Player : Carbon
+	public class Player : Carbon
 	{
 		public int XP;
 		public int Rank;
 		public int Gold;
+		public int Hunger;
 
 		//NOTE: Possible class
 		public List<int> Inventory;
 
-		public void Equip(Item a_Item);
-		public void Use(Item a_Item);
-		//Pickup from MoveTo of Carbon
+		public void Use(/*Item a_Item*/);
 	}
 
 }
