@@ -21,14 +21,14 @@ namespace Assets.Scripts
 		public bool hasChanged;
 		public Tile()
 		{
-			Carbon = 0;
-			Item = 0;
+			carbon = 0;
+			item = 0;
 
-			TrapType = 0;
-			IsDark = false;
-			IsTrapSet = false;
-			IsTrapVisible = false;
-			HasChanged = false;
+			trapType = 0;
+			isDark = false;
+			isTrapSet = false;
+			isTrapVisible = false;
+			hasChanged = false;
 		}
 
 	}

@@ -30,9 +30,9 @@ namespace Assets.Scripts
 
 			for (int i = 0; i < Tiles.Count(); i++)
 			{
-				if (Tiles[i].HasChanged)
+				if (Tiles[i].hasChanged)
 				{
-					Tiles[i].HasChanged = false;
+					Tiles[i].hasChanged = false;
 					tempList.Add(Tiles[i]);
 				}
 			}
