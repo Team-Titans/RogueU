@@ -15,7 +15,9 @@ namespace Assets.Scripts.Classes
 		//NOTE: Possible class
 		public List<int> Inventory;
 
-		public void Use(/*Item a_Item*/);
-	}
+		public void Use(/*Item a_Item*/)
+		{
 
+		}
+	}
 }

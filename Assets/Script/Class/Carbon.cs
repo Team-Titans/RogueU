@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Assets.Scripts.Classes
 {
 	//Inherits from  Carbon
-	public class Carbon : Entity
+	public class Carbon
 	{
 		public int hp;
 		public int strength;
@@ -16,8 +16,14 @@ namespace Assets.Scripts.Classes
 		
 		public int sight;
 
-		public void MoveTo();
-		public void Attack();
+		public void MoveTo()
+		{
+
+		}
+		public void Attack()
+		{
+
+		}
 
 	}
 
