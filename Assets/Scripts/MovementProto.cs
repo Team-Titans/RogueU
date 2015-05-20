@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Assets.Scripts;
 
 public class MovementProto : MonoBehaviour
 {
 	private float TileH;
 	private float TileW;
 	
+	
+
 	private float GridX;
 	private float GridY;
 	// Use this for initialization
