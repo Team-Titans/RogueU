@@ -3,6 +3,8 @@ using System.Collections;
 
 public class playerMove : MonoBehaviour {
 
+    private int health = 100;
+
 	// Use this for initialization
 	void Start () {
 	
