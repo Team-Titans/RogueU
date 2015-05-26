@@ -30,7 +30,9 @@ public class dungeonGrid : MonoBehaviour {
         //    Debug.Log(child.position.x + child.name);
         //}
 
-        SetTile(gridObjects[40, 10], door);
+        CreateRoom3(40,10);
+        CreateRoom3((int)Random.Range(3.0f, 77.0f), (int)Random.Range(3.0f, 18.0f));
+
 	}
 	
 	// Update is called once per frame
@@ -56,19 +58,7 @@ public class dungeonGrid : MonoBehaviour {
                 GameObject newTile;
 
                 // make a gameObject with sprite empty
-
-				if (Random.value < 0.6f)
-				{
-					newTile = Instantiate(floor);
-				}
-                else if (Random.value > 0.8f)
-                {
-                    newTile = Instantiate(wall);
-                }
-				else
-				{
-					newTile = Instantiate(empty);
-				}
+				newTile = Instantiate(empty);
                 
                 // set obj name 
                 newTile.name = gameObject.name + "item at(" + j + ", " + i + ")";
@@ -103,5 +93,80 @@ public class dungeonGrid : MonoBehaviour {
 
         Image tileSprite = a_Tile.GetComponent<Image>();
         tileSprite.sprite = prefabSprite;
+    }
+
+    //Create 3x3 room using center origin
+    void CreateRoom3(int x, int y)
+    {
+
+        SetTile(gridObjects[x, y], floor);
+
+        //Right
+        if (x < 78)
+        {
+            SetTile(gridObjects[x + 1, y], floor);
+            SetTile(gridObjects[x + 2, y], wall);
+        }
+        //Left
+        if (x > 1)
+        {
+            SetTile(gridObjects[x - 1, y], floor);
+            SetTile(gridObjects[x - 2, y], wall);
+        }
+
+        //Up
+        if (y < 18)
+        {
+            SetTile(gridObjects[x, y + 1], floor);
+            SetTile(gridObjects[x, y + 2], wall);
+        }
+
+        //Down
+        if (y > 1)
+        {
+            SetTile(gridObjects[x, y - 1], floor);
+            SetTile(gridObjects[x, y - 2], wall);
+
+        }
+
+        //Top-Right
+        if (x < 78 && y < 18)
+        {
+            SetTile(gridObjects[x + 1, y + 1], floor);
+            SetTile(gridObjects[x + 2, y + 1], wall);
+
+            SetTile(gridObjects[x + 1, y + 2], wall);
+            SetTile(gridObjects[x + 2, y + 2], wall);
+        }
+        
+        //Top-Left
+        if (x > 1 && y < 18)
+        {
+            SetTile(gridObjects[x - 1, y + 1], floor);
+            SetTile(gridObjects[x - 2, y + 1], wall);
+
+            SetTile(gridObjects[x - 1, y + 2], wall);
+            SetTile(gridObjects[x - 2, y + 2], wall);
+        }
+
+        //Bottom-Left
+        if (x > 1 && y > 1)
+        {
+            SetTile(gridObjects[x - 1, y - 1], floor);
+            SetTile(gridObjects[x - 2, y - 1], wall);
+
+            SetTile(gridObjects[x - 1, y - 2], wall);
+            SetTile(gridObjects[x - 2, y - 2], wall);
+        }
+
+        //Bottom-Right
+        if (x < 78 && y > 1)
+        {
+            SetTile(gridObjects[x + 1, y - 1], floor);
+            SetTile(gridObjects[x + 2, y - 1], wall);
+
+            SetTile(gridObjects[x + 1, y - 2], wall);
+            SetTile(gridObjects[x + 2, y - 2], wall);
+        }
     }
 }
