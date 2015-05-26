@@ -22,7 +22,8 @@ public class PlayerScore : MonoBehaviour {
 		{
 			Debug.Log("He touched the gold!");
 			Destroy(col.gameObject);
-			score += 75;
+			GetComponentInParent<LevelLoad>().totalGold--;
+			score += (75 * GetComponentInParent<LevelLoad>().totalEnemies);
 		}
 	}
 }

@@ -38,11 +38,14 @@ public class GoldProto : MonoBehaviour
 		//This gets the width and height of the current item
 		TileW = transform.localScale.x;
 		TileH = transform.localScale.y;
+		
+		//Set position
+		transform.position = new Vector3(GridX, GridY, 0);
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		transform.Translate((GridX * TileW) - transform.localPosition.x, (GridY * TileH) - transform.localPosition.y, 0);
+		
 	}
 }
