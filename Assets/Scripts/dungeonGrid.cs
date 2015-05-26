@@ -17,19 +17,20 @@ public class dungeonGrid : MonoBehaviour {
     public Dictionary<int, GameObject> objectID = new Dictionary<int, GameObject>(); 
 
     // create 2D array to store grid tiles gGameObjects
-    public GameObject [,] gridObjects = new GameObject [20,80];
+    public GameObject [,] gridObjects = new GameObject [80,20];
 
 	// Use this for initialization
 	void Start ()
     {
         AddImages();
-        CreateDictionary();
 
         //for debugging purposes
-        foreach (RectTransform child in gameObject.GetComponentsInChildren<RectTransform>())
-        {
-            Debug.Log(child.position.x + child.name);
-        }
+        //foreach (RectTransform child in gameObject.GetComponentsInChildren<RectTransform>())
+        //{
+        //    Debug.Log(child.position.x + child.name);
+        //}
+
+        SetTile(gridObjects[40, 10], door);
 	}
 	
 	// Update is called once per frame
@@ -55,37 +56,29 @@ public class dungeonGrid : MonoBehaviour {
                 GameObject newTile;
 
                 // make a gameObject with sprite empty
-				if (j == 40 && i == 10)
+
+				if (Random.value < 0.6f)
 				{
 					newTile = Instantiate(floor);
 				}
+                else if (Random.value > 0.8f)
+                {
+                    newTile = Instantiate(wall);
+                }
 				else
 				{
 					newTile = Instantiate(empty);
 				}
                 
-
-
-
                 // set obj name 
                 newTile.name = gameObject.name + "item at(" + j + ", " + i + ")";
                 // sets the panel(gameObject) as the parent of the newTile
                 newTile.transform.SetParent(gameObject.transform);
 
                 // store data in 2D array
-                gridObjects[i, j] = newTile;
+                gridObjects[j, i] = newTile;
             }
         }
-    }
-
-    void CreateDictionary()
-    {
-        objectID.Add(0, empty);
-        objectID.Add(1, wall);
-        objectID.Add(2, floor);
-        objectID.Add(3, door);
-        objectID.Add(4, stairs);
-        objectID.Add(5, path);
     }
 
     class Tile
@@ -100,5 +93,15 @@ public class dungeonGrid : MonoBehaviour {
         {
             gridObjects[t.x, t.y] = objectID[t.id];
         }
+    }
+
+    //Takes a GameObject A and sets its Sprite to the sprite of GameObject B
+    //
+    void SetTile(GameObject a_Tile, GameObject a_Prefab)
+    {
+        Sprite prefabSprite = a_Prefab.GetComponent<Image>().sprite;
+
+        Image tileSprite = a_Tile.GetComponent<Image>();
+        tileSprite.sprite = prefabSprite;
     }
 }
