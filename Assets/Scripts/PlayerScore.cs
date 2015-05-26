@@ -22,7 +22,7 @@ public class PlayerScore : MonoBehaviour {
 		{
 			Debug.Log("He touched the gold!");
 			Destroy(col.gameObject);
-			score++;
+			score += 75;
 		}
 	}
 }
