@@ -253,9 +253,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 328551079}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1885d668ce3fe4646bd038d6eaa32dc2, type: 3}
+  m_Script: {fileID: 11500000, guid: 465d16cd1dfbd284a97b8ec785cb3e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveBox: {fileID: 0}
+  Health: 0
+  GridX: 0
+  GridY: 0
+  GridXMax: 0
+  GridXMin: 0
+  GridYMax: 0
+  GridYMin: 0
 --- !u!1 &741058979
 GameObject:
   m_ObjectHideFlags: 0
