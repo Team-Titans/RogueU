@@ -3,36 +3,90 @@ using System.Collections;
 
 public class EnemyProto : MonoBehaviour {
 
-	private float lastGridX;
-	private float lastGridY;
+	public float GridX;
+	public float GridY;
+
+	private float TileW;
+	private float TileH;
+
 	public GameObject Player;
 	private bool firstTurn = true;
 	// Use this for initialization
 	void Start ()
 	{
-		lastGridX = Player.GetComponent<MovementProto>().GridX;
-		lastGridY = Player.GetComponent<MovementProto>().GridY;
+
+		//This gets the width and height of the current item
+		TileW = transform.localScale.x;
+		TileH = transform.localScale.y;
+
+		GridX = -5.5f;
+		GridY = -5.5f;
+
 	}
-	
+	bool IsBeside(float tX, float tY, float uX, float uY)
+	{
+		if (tX + 1 == uX && tY == uY)
+		{
+			return true;
+		}
+		if (tX - 1 == uX && tY == uY)
+		{
+			return true;
+		}
+		if (tY + 1 == uY && tX == uX)
+		{
+			return true;
+		}
+		if (tY - 1 == uY && tX == uX)
+		{
+			return true;
+		}
+
+		return false;
+	}
 	// Update is called once per frame
 	void Update ()
 	{
-		float curGridX = Player.GetComponent<MovementProto>().GridX;
-		float curGridY = Player.GetComponent<MovementProto>().GridY;
 		if (!firstTurn)
 		{
-			if (lastGridY != curGridY || lastGridX != curGridX)
+			if (!IsBeside(GridX, GridY, Player.GetComponent<MovementProto>().GridX, Player.GetComponent<MovementProto>().GridY))
 			{
-				//PUT ENEMY TURN LOGIC HERE
-				Debug.Log("ENEMY TURN");
+				if (Player.GetComponent<MovementProto>().HasMoved)
+				{
+					Player.GetComponent<MovementProto>().HasMoved = false;
+					//PUT ENEMY TURN LOGIC HERE
+					Debug.Log("ENEMY TURN");
+
+					if (Mathf.Abs(Player.GetComponent<MovementProto>().GridX - GridX) > Mathf.Abs(Player.GetComponent<MovementProto>().GridY - GridY))
+					{
+						if (GridX >= Player.GetComponent<MovementProto>().GridX)
+						{
+							GridX--;
+						}
+						else
+						{
+							GridX++;
+						}
+					}
+					else
+					{
+						if (GridY >= Player.GetComponent<MovementProto>().GridY)
+						{
+							GridY--;
+						}
+						else
+						{
+							GridY++;
+						}
+					}
+				}
 			}
 		}
 		else 
 		{
+
 			firstTurn = false;
 		}
-
-		lastGridX = curGridX;
-		lastGridY = curGridY;
+		transform.Translate((GridX * TileW) - transform.localPosition.x, (GridY * TileH) - transform.localPosition.y, 0);
 	}
 }

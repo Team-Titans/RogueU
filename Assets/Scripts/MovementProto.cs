@@ -8,7 +8,9 @@ public class MovementProto : MonoBehaviour
 	private float TileW;
 
 	public GameObject MoveBox;
+	public GameObject Enemy;
 
+	public bool HasMoved;
 	public float Health;
 	public float GridX;
 	public float GridY;
@@ -20,6 +22,7 @@ public class MovementProto : MonoBehaviour
 	void Start ()
 	{
 		//Default values, change these to wherever this needs to spawn
+		HasMoved = false;
 		GridX = 0.5f;
 		GridY = 0.5f;
 
@@ -34,31 +37,66 @@ public class MovementProto : MonoBehaviour
 		TileW = transform.localScale.x;
 		TileH = transform.localScale.y;
 
-		//Moves this to wherever the default is
-		transform.Translate((GridX * TileW) - transform.localPosition.x, (GridY * TileH) - transform.localPosition.y, 0);
 	}
-	
+	void Attack()
+	{
+		//ATTACK BY PLAYER LOGIC GOES HERE
+	}
 	// Update is called once per frame
 	void Update ()
 	{
-		
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			HasMoved = true;
+		}
 		if (Input.GetKeyDown(KeyCode.RightArrow) && GridX < GridXMax)
 		{
-			GridX++;
-			
+			if (GridX + 1 == Enemy.GetComponent<EnemyProto>().GridX && GridY == Enemy.GetComponent<EnemyProto>().GridY)
+			{
+				Attack();
+			}
+			else
+			{
+				GridX++;
+			}
+			HasMoved = true;
 		}
 		else if (Input.GetKeyDown(KeyCode.LeftArrow) && GridX > GridXMin)
 		{
-			GridX--;
+			if (GridX - 1 == Enemy.GetComponent<EnemyProto>().GridX && GridY == Enemy.GetComponent<EnemyProto>().GridY)
+			{
+				Attack();
+			}
+			else
+			{
+				GridX--;
+			}
+			HasMoved = true;
 		}
 		else if (Input.GetKeyDown(KeyCode.UpArrow) && GridY < GridYMax)
 		{
-			GridY++;
+			if (GridY + 1 == Enemy.GetComponent<EnemyProto>().GridY && GridX == Enemy.GetComponent<EnemyProto>().GridX)
+			{
+				Attack();
+			}
+			else
+			{
+				GridY++;
+			}
+			HasMoved = true;
 		}
 
 		else if (Input.GetKeyDown(KeyCode.DownArrow) && GridY > GridXMin)
 		{
-			GridY--;
+			if (GridY - 1 == Enemy.GetComponent<EnemyProto>().GridY && GridX == Enemy.GetComponent<EnemyProto>().GridX)
+			{
+				Attack();
+			}
+			else
+			{
+				GridY--;
+			}
+			HasMoved = true;
 		}
 		transform.Translate((GridX * TileW) - transform.localPosition.x, (GridY * TileH) - transform.localPosition.y, 0);
 
