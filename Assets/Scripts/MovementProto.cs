@@ -18,7 +18,7 @@ public class MovementProto : MonoBehaviour
 	public float GridXMin;
 	public float GridYMax;
 	public float GridYMin;
-	// Use this for initialization
+
 	void Start ()
 	{
 		//Default values, change these to wherever this needs to spawn
@@ -38,11 +38,12 @@ public class MovementProto : MonoBehaviour
 		TileH = transform.localScale.y;
 
 	}
+
 	void Attack()
 	{
 		//ATTACK BY PLAYER LOGIC GOES HERE
 	}
-	// Update is called once per frame
+
 	void Update ()
 	{
 		if (Input.GetKeyDown(KeyCode.Space))

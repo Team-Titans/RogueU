@@ -44,7 +44,12 @@ public class EnemyProto : MonoBehaviour {
 
 		return false;
 	}
-	// Update is called once per frame
+
+	void Attack()
+	{
+
+	}
+
 	void Update ()
 	{
 		if (!firstTurn)
@@ -80,6 +85,10 @@ public class EnemyProto : MonoBehaviour {
 						}
 					}
 				}
+			}
+			else
+			{
+				Attack();
 			}
 		}
 		else 
