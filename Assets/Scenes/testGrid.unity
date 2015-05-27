@@ -527,7 +527,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1782350488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.125, y: 1.125, z: 0}
+  m_LocalPosition: {x: 1.125, y: 1.125, z: -1}
   m_LocalScale: {x: .0500000007, y: .0500000007, z: 1}
   m_Children: []
   m_Father: {fileID: 953122038}
@@ -556,6 +556,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc75eca2fd3180d4eb1d4e65b5097d8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  v: {x: 0, y: 0, z: 0}
 --- !u!1 &1918221779
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,6 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 465d16cd1dfbd284a97b8ec785cb3e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: 
   MoveBox: {fileID: 953122037}
   Health: 0
   GridX: 0

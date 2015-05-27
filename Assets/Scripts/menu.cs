@@ -10,10 +10,10 @@ public class menu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if(Input.GetKeyDown(KeyCode.A))
+	    if(Input.GetKeyDown(KeyCode.Return))
         {
             // not working yet
-            Application.LoadLevel("wade move test");
+            Application.LoadLevel("testGrid");
         }
 	}
 }

@@ -256,6 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 465d16cd1dfbd284a97b8ec785cb3e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: 
   MoveBox: {fileID: 0}
   Health: 0
   GridX: 0

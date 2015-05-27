@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using Assets.Scripts;
+using UnityEngine.UI;
 
 public class MovementProto : MonoBehaviour
 {
 	private float TileH;
 	private float TileW;
 
+    public string Name;
 	public GameObject MoveBox;
 
 	public float Health;
@@ -36,6 +38,9 @@ public class MovementProto : MonoBehaviour
 
 		//Moves this to wherever the default is
 		transform.Translate((GridX * TileW) - transform.localPosition.x, (GridY * TileH) - transform.localPosition.y, 0);
+
+        var v = GameObject.Find("GameObjectToKeep");
+        //v.GetComponent(p);
 	}
 	
 	// Update is called once per frame
