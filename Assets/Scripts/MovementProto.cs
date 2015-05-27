@@ -41,7 +41,7 @@ public class MovementProto : MonoBehaviour
 
 	void Attack()
 	{
-		//ATTACK BY PLAYER LOGIC GOES HERE
+		Debug.Log("PLAYER ATTACK");
 	}
 
 	void Update ()

@@ -47,47 +47,45 @@ public class EnemyProto : MonoBehaviour {
 
 	void Attack()
 	{
-
+		Debug.Log("ENEMY ATTACK");
 	}
 
 	void Update ()
 	{
 		if (!firstTurn)
 		{
-			if (!IsBeside(GridX, GridY, Player.GetComponent<MovementProto>().GridX, Player.GetComponent<MovementProto>().GridY))
+			if (Player.GetComponent<MovementProto>().HasMoved && !IsBeside(GridX, GridY, Player.GetComponent<MovementProto>().GridX, Player.GetComponent<MovementProto>().GridY))
 			{
-				if (Player.GetComponent<MovementProto>().HasMoved)
-				{
-					Player.GetComponent<MovementProto>().HasMoved = false;
-					//PUT ENEMY TURN LOGIC HERE
-					Debug.Log("ENEMY TURN");
+				Player.GetComponent<MovementProto>().HasMoved = false;
+				//PUT ENEMY TURN LOGIC HERE
+				Debug.Log("ENEMY TURN");
 
-					if (Mathf.Abs(Player.GetComponent<MovementProto>().GridX - GridX) > Mathf.Abs(Player.GetComponent<MovementProto>().GridY - GridY))
+				if (Mathf.Abs(Player.GetComponent<MovementProto>().GridX - GridX) > Mathf.Abs(Player.GetComponent<MovementProto>().GridY - GridY))
+				{
+					if (GridX >= Player.GetComponent<MovementProto>().GridX)
 					{
-						if (GridX >= Player.GetComponent<MovementProto>().GridX)
-						{
-							GridX--;
-						}
-						else
-						{
-							GridX++;
-						}
+						GridX--;
 					}
 					else
 					{
-						if (GridY >= Player.GetComponent<MovementProto>().GridY)
-						{
-							GridY--;
-						}
-						else
-						{
-							GridY++;
-						}
+						GridX++;
+					}
+				}
+				else
+				{
+					if (GridY >= Player.GetComponent<MovementProto>().GridY)
+					{
+						GridY--;
+					}
+					else
+					{
+						GridY++;
 					}
 				}
 			}
-			else
+			else if (Player.GetComponent<MovementProto>().HasMoved)
 			{
+				Player.GetComponent<MovementProto>().HasMoved = false;
 				Attack();
 			}
 		}
