@@ -154,6 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90f8acf655a9984db3650f4cb39dd7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GridX: 0
+  GridY: 0
   Player: {fileID: 1918221779}
 --- !u!61 &82226217
 BoxCollider2D:
@@ -690,6 +692,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveBox: {fileID: 953122037}
+  Enemy: {fileID: 82226213}
+  HasMoved: 0
   Health: 0
   GridX: 0
   GridY: 0
