@@ -17,6 +17,12 @@ public class MovementProto : MonoBehaviour
 	public float GridYMax;
 	public float GridYMin;
 	// Use this for initialization
+
+	void Awake()
+	{
+
+	}
+
 	void Start ()
 	{
 		//Default values, change these to wherever this needs to spawn
@@ -62,5 +68,26 @@ public class MovementProto : MonoBehaviour
 		}
 		transform.Translate((GridX * TileW) - transform.localPosition.x, (GridY * TileH) - transform.localPosition.y, 0);
 
+	}
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		//Pickup Gold on Collision + Add Score
+		if (col.gameObject.tag == "Gold")
+		{
+			Debug.Log("He touched the gold!");
+			Destroy(col.gameObject);
+
+			LevelLoad loaded = GetComponentInParent<LevelLoad>();
+			if (loaded != null)
+			{
+				loaded.totalGold--;
+				PlayerScore scoreDisp = GameObject.FindObjectOfType<PlayerScore>();
+
+				if (scoreDisp != null)
+				{
+					scoreDisp.Score += 75;
+				}
+			}
+		}
 	}
 }

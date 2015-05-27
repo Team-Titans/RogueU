@@ -3,26 +3,34 @@ using System.Collections;
 
 public class PlayerScore : MonoBehaviour {
 
-	public int score = 0;
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
-
-	void OnTriggerEnter2D(Collider2D col)
+	private int _score = 0;
+	public int Score
 	{
-		//Pickup Gold on Collision + Add Score
-		if (col.gameObject.tag == "Gold")
+		get { return _score; }
+		set
 		{
-			Debug.Log("He touched the gold!");
-			Destroy(col.gameObject);
-			GetComponentInParent<LevelLoad>().totalGold--;
-			score += (75 * GetComponentInParent<LevelLoad>().totalEnemies);
+			if (_score != value)
+			{
+				_score = value;
+				if (OnScoreChanged != null)
+				{
+					OnScoreChanged(_score);
+				}
+			}
 		}
 	}
+
+	public delegate void dScoreChanged(int num);
+	public dScoreChanged OnScoreChanged;
+
+	void Start()
+	{
+		OnScoreChanged += LogScore;
+	}
+
+	public void LogScore(int score)
+	{
+		Debug.Log("The score is: " + score.ToString());
+	}
+
 }

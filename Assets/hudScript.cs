@@ -1,15 +1,25 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class hudScript : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+	void Awake()
+	{
+		PlayerScore scoreDisp = null;
+		scoreDisp = GameObject.FindObjectOfType<PlayerScore>();
+		if (scoreDisp != null)
+		{
+			scoreDisp.OnScoreChanged += UpdateScoreDisplay;
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public void UpdateScoreDisplay(int score)
+	{
+		Text temp = gameObject.GetComponent<Text>();
+		if (temp != null)
+		{
+			temp.text = "Score: " + score.ToString();
+		}
 	}
 }
