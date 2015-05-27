@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using Assets.Scripts;
+using UnityEngine.UI;
 
 public class MovementProto : MonoBehaviour
 {
 	private float TileH;
 	private float TileW;
 
+    public string Name;
 	public GameObject MoveBox;
 	public GameObject Enemy;
 
@@ -37,6 +39,7 @@ public class MovementProto : MonoBehaviour
 		TileW = transform.localScale.x;
 		TileH = transform.localScale.y;
 
+		transform.Translate((GridX * TileW) - transform.localPosition.x, (GridY * TileH) - transform.localPosition.y, 0);
 	}
 
 	void Attack()

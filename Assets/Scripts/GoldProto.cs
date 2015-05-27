@@ -40,7 +40,7 @@ public class GoldProto : MonoBehaviour
 		TileH = transform.localScale.y;
 		
 		//Set position
-		transform.position = new Vector3(GridX, GridY, 0);
+		transform.position = new Vector3(GridX, GridY, -2);
 	}
 
 	// Update is called once per frame

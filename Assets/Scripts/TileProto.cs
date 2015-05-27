@@ -15,6 +15,11 @@ public class TileProto : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-	
+        // when player dies go to scoreScreen scene
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            // not working yet
+            Application.LoadLevel("scoreScreen");
+        }
 	}
 }
