@@ -87,6 +87,19 @@ public class LevelLoad : MonoBehaviour {
 
 	}
 
+	void ResetEnemy()
+	{
+		EnemyProto enemyScript = GetComponentInChildren<EnemyProto>();
+		if (enemyScript != null)
+		{
+			enemyScript.Reset();
+		}
+		else
+		{
+			Debug.Log("YA FUCKED UP");
+		}
+	}
+
 	void LoadPlayer()
 	{
 		
@@ -122,5 +135,6 @@ public class LevelLoad : MonoBehaviour {
 		currentLevel++;
 		totalGold = 0;
 		LoadGold();
+		ResetEnemy();
 	}
 }

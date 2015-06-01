@@ -3,9 +3,6 @@ using System.Collections;
 
 public class stairsScript : MonoBehaviour
 {
-	private float TileH;
-	private float TileW;
-
 	public float GridX;
 	public float GridY;
 
@@ -32,9 +29,6 @@ public class stairsScript : MonoBehaviour
 		}
 
 		//This gets the width and height of the current item
-		TileW = transform.localScale.x;
-		TileH = transform.localScale.y;
-
 		//Set position
 		transform.position = new Vector3(GridX, GridY, -2);
 	}
