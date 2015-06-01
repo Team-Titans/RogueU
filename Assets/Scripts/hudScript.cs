@@ -4,7 +4,7 @@ using System.Collections;
 
 public class hudScript : MonoBehaviour {
 
-	void Awake()
+	void Start()
 	{
 		PlayerScore scoreDisp = null;
 		scoreDisp = GameObject.FindObjectOfType<PlayerScore>();

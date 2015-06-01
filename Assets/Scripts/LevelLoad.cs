@@ -22,13 +22,11 @@ public class LevelLoad : MonoBehaviour {
 
 	void Awake()
 	{
-
+		OnLevelLoad += LoadNext;
 	}
 
 	// Use this for initialization
 	void Start () {
-		OnLevelLoad += LoadNext;
-
 		//Clear Level
 		ClearGoldStairs();
 
@@ -67,29 +65,31 @@ public class LevelLoad : MonoBehaviour {
 		newEnemy = Instantiate(enemy);
 		newEnemy.transform.SetParent(gameObject.transform);
 
-		//Initialize EnemyProto Script
-		//EnemyProto scriptEnemy = newEnemy.GetComponent<EnemyProto>();
-		//if (scriptEnemy != null)
-		//{
-		//	scriptEnemy.Player = newPlayer;
-		//}
 
+		GameObject newPlayer;
+		newPlayer = Instantiate(player);
+		newPlayer.transform.SetParent(gameObject.transform);
+
+		//Initialize EnemyProto Script
+		EnemyProto scriptEnemy = newEnemy.GetComponent<EnemyProto>();
+		if (scriptEnemy != null)
+		{
+			scriptEnemy.Player = newPlayer;
+		}
+
+		//Initialze Player movement proto script
+		MovementProto scriptPlayer = newPlayer.GetComponent<MovementProto>();
+		if (scriptPlayer != null)
+		{
+			scriptPlayer.MoveBox = gameObject;
+			scriptPlayer.Enemy = newEnemy;
+		}
 
 	}
 
 	void LoadPlayer()
 	{
-		GameObject newPlayer;
-		newPlayer = Instantiate(player);
-		newPlayer.transform.SetParent(gameObject.transform);
-
-		//Initialze Player movement proto script
-		//MovementProto scriptPlayer = newPlayer.GetComponent<MovementProto>();
-		//if (scriptPlayer != null)
-		//{
-		//	scriptPlayer.MoveBox = gameObject;
-		//	scriptPlayer.Enemy = newEnemy;
-		//}
+		
 
 	}
 
