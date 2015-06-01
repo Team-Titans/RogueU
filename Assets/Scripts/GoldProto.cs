@@ -4,8 +4,6 @@ using Assets.Scripts;
 
 public class GoldProto : MonoBehaviour
 {
-	public GameObject MoveBox;
-
 	public float GridX;
 	public float GridY;
 
