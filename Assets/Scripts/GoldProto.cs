@@ -4,9 +4,6 @@ using Assets.Scripts;
 
 public class GoldProto : MonoBehaviour
 {
-	private float TileH;
-	private float TileW;
-
 	public GameObject MoveBox;
 
 	public float GridX;
@@ -34,10 +31,6 @@ public class GoldProto : MonoBehaviour
 		{
 			GridY += .5f;
 		}
-
-		//This gets the width and height of the current item
-		TileW = transform.localScale.x;
-		TileH = transform.localScale.y;
 		
 		//Set position
 		transform.position = new Vector3(GridX, GridY, -2);

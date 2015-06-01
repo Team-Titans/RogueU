@@ -87,7 +87,7 @@ public class panelGrid : MonoBehaviour {
 
     class Tile
     {
-        public int x, y, id;
+        public int x = 0, y = 0, id = 0;
     };
 
     void changeImages(List<Tile> tList)

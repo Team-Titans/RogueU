@@ -12,6 +12,7 @@ public class MovementProto : MonoBehaviour
 	public GameObject MoveBox;
 	public GameObject Enemy;
 
+	public bool isAlive;
 	public bool HasMoved;
 	public float Health;
 	public float GridX;
@@ -23,6 +24,8 @@ public class MovementProto : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		isAlive = true;
+		Health = 20;
 		//Default values, change these to wherever this needs to spawn
 		HasMoved = false;
 		GridX = 0.5f;
@@ -40,15 +43,32 @@ public class MovementProto : MonoBehaviour
 		TileH = transform.localScale.y;
 
 		transform.Translate((GridX * TileW) - transform.localPosition.x, (GridY * TileH) - transform.localPosition.y, 0);
+		
 	}
 
 	void Attack()
 	{
+		// Subtract health from enemy
+		Enemy.GetComponent<EnemyProto>().Health -= 7;
 		Debug.Log("PLAYER ATTACK");
+		if (Enemy.GetComponent<EnemyProto>().Health < 1)
+		{
+			//PUT ENEMY DEATH LOGIC HERE
+			Enemy.GetComponent<EnemyProto>().IsKill();
+			//Application.Quit();
+		}
 	}
 
 	void Update ()
 	{
+		if (Input.GetKeyDown(KeyCode.K))
+		{
+			Debug.Log("SUICIDE WOULD BE NICE AND NEAT");
+			for (int i = 0; i < 10; i++)
+			{
+				Enemy.GetComponent<EnemyProto>().Attack();
+			}
+		}
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
 			HasMoved = true;
