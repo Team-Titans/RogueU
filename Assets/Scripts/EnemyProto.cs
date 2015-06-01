@@ -71,6 +71,8 @@ public class EnemyProto : MonoBehaviour {
 
 	void Update ()
 	{
+		//debug bullshit
+		//firstTurn = true;
 		if (!firstTurn)
 		{
 			if (Player.GetComponent<MovementProto>().HasMoved && !IsBeside(GridX, GridY, Player.GetComponent<MovementProto>().GridX, Player.GetComponent<MovementProto>().GridY))

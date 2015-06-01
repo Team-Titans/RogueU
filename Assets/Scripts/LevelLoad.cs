@@ -4,10 +4,10 @@ using System.Collections;
 public class LevelLoad : MonoBehaviour {
 
 	public int totalGold;
-	private int maxGold;
+	public int maxGold;
 	
 	public int totalEnemies;
-	public int currentLevel = 0;
+	public int currentLevel;
 
 	public GameObject gold;
 	public GameObject enemy;
@@ -27,20 +27,20 @@ public class LevelLoad : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//Clear Level
-		ClearGoldStairs();
-
 		//Load player and enemies
-		LoadPlayer();
+		//LoadPlayer();
 		LoadCarbon();
 
 		//Loads Stairs
 		LoadStairs();
+
+		//Load Gold
+		LoadGold();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		LoadGold();
+
 	}
 
 	//Loads gold at scene start and
@@ -48,8 +48,8 @@ public class LevelLoad : MonoBehaviour {
 	void LoadGold()
 	{
 		//Set max gold based on current level
-		maxGold = 3 + currentLevel;
-		if (totalGold < maxGold)
+		maxGold = 1 + currentLevel;
+		while (totalGold < maxGold)
 		{
 			GameObject newGold;
 			newGold = Instantiate(gold);
@@ -119,7 +119,8 @@ public class LevelLoad : MonoBehaviour {
 	{
 		ClearGoldStairs();
 		LoadStairs();
-		LoadGold();
 		currentLevel++;
+		totalGold = 0;
+		LoadGold();
 	}
 }
