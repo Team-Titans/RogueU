@@ -7,8 +7,6 @@ public class GoldProto : MonoBehaviour
 	private float TileH;
 	private float TileW;
 
-	public GameObject MoveBox;
-
 	public float GridX;
 	public float GridY;
 

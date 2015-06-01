@@ -39,7 +39,7 @@ public class MovementProto : MonoBehaviour
 		TileW = transform.localScale.x;
 		TileH = transform.localScale.y;
 
-		transform.Translate((GridX * TileW) - transform.localPosition.x, (GridY * TileH) - transform.localPosition.y, 0);
+		transform.position = new Vector3(GridX, GridY, -2);
 	}
 
 	void Attack()
