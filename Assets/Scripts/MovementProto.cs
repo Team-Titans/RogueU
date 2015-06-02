@@ -195,7 +195,7 @@ public class MovementProto : MonoBehaviour
 			}
 		}
 
-		if (col.tag == "stairs")
+		if (col.gameObject.tag == "stairs")
 		{
 			Debug.Log("player climbed stairs");
 
@@ -213,6 +213,14 @@ public class MovementProto : MonoBehaviour
 			{
 				loadLevel.OnLevelLoad();
 			}
+		}
+
+		if (col.gameObject.tag == "sword")
+		{
+			Debug.Log("Picked up a sword! Swing it!");
+			//Attack Power Up!
+			AttackPower += 3;
+			Destroy(col.gameObject);
 		}
 	}
 }
