@@ -40,8 +40,23 @@ public class EnemyProto : MonoBehaviour {
 		TileW = transform.localScale.x;
 		TileH = transform.localScale.y;
 
+		//Check conflicting position / randomize Y
+		while (GridY == Player.GetComponent<MovementProto>().GridY)
+		{
+			GridY = Random.Range(0, 15) - 7;
+			if (GridY < 0)
+			{
+				GridY -= .5f;
+			}
+			else
+			{
+				GridY += .5f;
+			}
+		}
+
 		//Set position
 		transform.position = new Vector3(GridX, GridY, -2);
+		
 	}
 	bool IsBeside(float tX, float tY, float uX, float uY)
 	{
