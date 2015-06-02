@@ -12,6 +12,6 @@ public class getName : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Object.DontDestroyOnLoad(gameObject);
+       
 	}
 }
