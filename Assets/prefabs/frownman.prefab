@@ -56,7 +56,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GridX: 0
   GridY: 0
+  Health: 0
   Player: {fileID: 110434, guid: 63ce210c0953f3c43870e6af5f51e741, type: 2}
+  isAlive: 0
 --- !u!212 &21263500
 SpriteRenderer:
   m_ObjectHideFlags: 1
