@@ -41,3 +41,5 @@ Thumbs.db
 */UnityVS/
 UnityVS.meta
 *.sln.DotSettings
+DeleteMe.exe
+/DeleteMe_Data
