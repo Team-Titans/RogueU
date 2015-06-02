@@ -14,13 +14,37 @@ public class MovementProto : MonoBehaviour
 
 	public bool isAlive;
 	public bool HasMoved;
-	public float Health;
+	//public float Health;
 	public float GridX;
 	public float GridY;
 	public float GridXMax;
 	public float GridXMin;
 	public float GridYMax;
 	public float GridYMin;
+
+	//Changes to health
+	public delegate void dHealthChanged(int num);
+	public dHealthChanged OnHealthChanged;
+
+	//Get Set HP
+	private int _health;
+	public int Health
+	{
+		get { return _health; }
+		set
+		{
+			if (_health != value)
+			{
+				_health = value;
+				if (OnHealthChanged != null)
+				{
+					OnHealthChanged(_health);
+				}
+			}
+		}
+	}
+
+
 	// Use this for initialization
 	void Start ()
 	{

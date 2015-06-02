@@ -108,6 +108,7 @@ public class EnemyProto : MonoBehaviour {
 	{
 		//Subtracts health
 		Player.GetComponent<MovementProto>().Health -= 3;
+
 		Debug.Log("ENEMY ATTACK");
 		if (Player.GetComponent<MovementProto>().Health < 1)
 		{
