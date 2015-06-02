@@ -29,7 +29,21 @@ public class GoldProto : MonoBehaviour
 		{
 			GridY += .5f;
 		}
-		
+
+		//If gold spawns on the same X as stairs random it
+		while (GridX == FindObjectOfType<stairsScript>().GridX)
+		{
+			GridX = Random.Range(0, 15) - 7;
+			if (GridX < 0)
+			{
+				GridX -= .5f;
+			}
+			else
+			{
+				GridX += .5f;
+			}
+		}
+
 		//Set position
 		transform.position = new Vector3(GridX, GridY, -2);
 	}

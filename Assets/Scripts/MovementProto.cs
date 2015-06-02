@@ -66,7 +66,7 @@ public class MovementProto : MonoBehaviour
 		TileW = transform.localScale.x;
 		TileH = transform.localScale.y;
 
-		transform.position = new Vector3(GridX, GridY, -2);
+		transform.position = new Vector3(GridX, GridY, -3);
 		
 	}
 
@@ -167,6 +167,19 @@ public class MovementProto : MonoBehaviour
 				{
 					scoreDisp.Score += 75;
 				}
+			}
+		}
+
+		if (col.tag == "stairs")
+		{
+			Debug.Log("player climbed stairs");
+
+			//Load level script and start level
+			LevelLoad loadLevel = null;
+			loadLevel = GameObject.FindObjectOfType<LevelLoad>();
+			if (loadLevel != null)
+			{
+				loadLevel.OnLevelLoad();
 			}
 		}
 	}

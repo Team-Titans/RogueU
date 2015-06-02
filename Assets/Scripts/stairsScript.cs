@@ -30,26 +30,10 @@ public class stairsScript : MonoBehaviour
 
 		//This gets the width and height of the current item
 		//Set position
-		transform.position = new Vector3(GridX, GridY, -2);
+		transform.position = new Vector3(GridX, GridY, -3);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	}
-
-    void OnTriggerEnter2D (Collider2D other)
-    {       
-        if (tag == "stairs")
-        {
-            Debug.Log("player climbed stairs");
-			
-			//Load level script and start level
-			LevelLoad loadLevel = null;
-			loadLevel = GameObject.FindObjectOfType<LevelLoad>();
-			if (loadLevel != null)
-			{
-				loadLevel.OnLevelLoad();
-			}
-        }
-    }
 }

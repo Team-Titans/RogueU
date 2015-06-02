@@ -55,7 +55,7 @@ public class EnemyProto : MonoBehaviour {
 		}
 
 		//Set position
-		transform.position = new Vector3(GridX, GridY, -2);
+		transform.position = new Vector3(GridX, GridY, -3);
 		
 	}
 	bool IsBeside(float tX, float tY, float uX, float uY)
@@ -108,7 +108,7 @@ public class EnemyProto : MonoBehaviour {
 		TileH = transform.localScale.y;
 
 		//Set position
-		transform.position = new Vector3(GridX, GridY, -2);
+		transform.position = new Vector3(GridX, GridY, -3);
 	}
 
 	public void IsKill()
