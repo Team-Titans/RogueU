@@ -15,6 +15,9 @@ public class SetScores : MonoBehaviour {
 	{
 		HighScores = new List<HighScore>();
 		HighScores.Clear();
+
+		//GraveBox.text += PlayerPrefs.GetString("Player") + 
+
 		for (int i = 1; i < 11; i++)
 		{
 			if (PlayerPrefs.HasKey("hiscore" + i))

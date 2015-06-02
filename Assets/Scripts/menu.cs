@@ -3,28 +3,36 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class menu : MonoBehaviour {
-
-    public Text playerName;
-    public Button StartButton;
-    public Button QuitButton;
+public class menu : MonoBehaviour
+{
+	public Text NameField;
 
 	// Use this for initialization
-	void Start () {
-        playerName = GetComponent<Text>();
+	void Start ()
+	{
+		
 	}
 	
+	public void ChangeLevel()
+	{
+		if (NameField.text != "")
+		{
+			PlayerPrefs.SetString("Player", NameField.text);
+			Application.LoadLevel("GameLoop");
+			Debug.Log("Level Loading");
+		}
+	}
 	// Update is called once per frame
-	void Update () {
-        playerName = GetComponent<Text>();
+	void Update ()
+	{
+        if (Input.GetKeyDown(KeyCode.P))
+		{
+			PlayerPrefs.DeleteAll();
+		}
 
 	    if(Input.GetKeyDown(KeyCode.Return))
         {
-            PlayerPrefs.SetString("Player", playerName.text);
-            Application.LoadLevel("GameLoop");
-            Debug.Log("Level Loading");
-
-            //Debug.Log(PlayerPrefs.GetString("name"));
+			ChangeLevel();
         }
 	}
 }

@@ -377,7 +377,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!4 &953122038 stripped
+--- !u!4 &953122038
 Transform:
   m_PrefabParentObject: {fileID: 479798, guid: 139d8f12d6a49be439b69cf9a35c79e3, type: 2}
   m_PrefabInternal: {fileID: 1864895243}
@@ -767,6 +767,7 @@ GameObject:
   - 224: {fileID: 1763001888}
   - 222: {fileID: 1763001891}
   - 114: {fileID: 1763001890}
+  - 114: {fileID: 1763001889}
   m_Layer: 5
   m_Name: Name
   m_TagString: Untagged
@@ -791,6 +792,17 @@ RectTransform:
   m_AnchoredPosition: {x: -230, y: 299}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: .5, y: .5}
+--- !u!114 &1763001889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1763001887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 988f123477880ff478e3df85ab0c97cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1763001890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,7 +828,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Name:'
+  m_Text: 'Name: '
 --- !u!222 &1763001891
 CanvasRenderer:
   m_ObjectHideFlags: 0
