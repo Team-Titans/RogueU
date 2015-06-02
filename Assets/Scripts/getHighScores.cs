@@ -8,7 +8,6 @@ public class getHighScores : MonoBehaviour {
     {
         public int score;
         public string name;
-        public string killedBy;
     }
 
     public List<PlayerScore> scoreList = new List<PlayerScore>();
@@ -26,7 +25,6 @@ public class getHighScores : MonoBehaviour {
 
         temp.score = PlayerPrefs.GetInt("finalScore");
         temp.name = PlayerPrefs.GetString("name");
-        temp.killedBy = "slime";
 
         scoreList.Add(temp);
 	}
@@ -47,7 +45,7 @@ public class getHighScores : MonoBehaviour {
             
             //t.transform.position = new Vector3(500.0f, count, 0.0f);
 
-            highScores.text = player.name + " got killed by " + player.killedBy;
+            highScores.text = player.name + " got killed by a Slime";
             //highScores.transform.position = new Vector3(500.0f, count, 0.0f);
             //newText.transform.position(10f, 10f, 0f);
         }
@@ -56,7 +54,6 @@ public class getHighScores : MonoBehaviour {
         {
             temp.score = 1000;
             temp.name = "grjehgk";
-            temp.killedBy = "slime";
 
             
             scoreList.Add(temp);

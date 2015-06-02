@@ -18,8 +18,8 @@ public class menu : MonoBehaviour {
 
 	    if(Input.GetKeyDown(KeyCode.Return))
         {
-            PlayerPrefs.SetString("name", playerName.text);
-            Application.LoadLevel("MasterLoop");
+            PlayerPrefs.SetString("Player", playerName.text);
+            Application.LoadLevel("GameLoop");
             Debug.Log("Level Loading");
 
             //Debug.Log(PlayerPrefs.GetString("name"));
