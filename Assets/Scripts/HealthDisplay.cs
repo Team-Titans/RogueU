@@ -21,9 +21,11 @@ public class HealthDisplay : MonoBehaviour {
 	public void UpdateHealthDisplay(int health)
 	{
 		Text temp = gameObject.GetComponent<Text>();
+		MovementProto healthDisp = GameObject.FindObjectOfType<MovementProto>();
+
 		if (temp != null)
 		{
-			temp.text = "HP: " + health.ToString() + "//20";
+			temp.text = "HP: " + health.ToString() + "//" + healthDisp.maxHealth;
 		}
 	}
 }

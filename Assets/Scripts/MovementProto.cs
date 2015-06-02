@@ -14,7 +14,6 @@ public class MovementProto : MonoBehaviour
 
 	public bool isAlive;
 	public bool HasMoved;
-	//public float Health;
 	public float GridX;
 	public float GridY;
 	public float GridXMax;
@@ -25,6 +24,7 @@ public class MovementProto : MonoBehaviour
 	//Changes to health
 	public delegate void dHealthChanged(int num);
 	public dHealthChanged OnHealthChanged;
+	public int maxHealth = 20;
 
 	//Get Set HP
 	private int _health;
@@ -173,6 +173,13 @@ public class MovementProto : MonoBehaviour
 		if (col.tag == "stairs")
 		{
 			Debug.Log("player climbed stairs");
+
+			//Restore some health and 1 to max health
+			maxHealth += 1;
+			if (Health < maxHealth)
+			{
+				Health += 2;
+			}
 
 			//Load level script and start level
 			LevelLoad loadLevel = null;
