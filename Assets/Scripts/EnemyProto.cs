@@ -130,7 +130,7 @@ public class EnemyProto : MonoBehaviour {
 			//PLAYER IS DEAD LOGIC GOES HERE (to console, isalive, loadlevel)
 			Debug.Log("PLAYER IS DEAD");
 			Player.GetComponent<MovementProto>().isAlive = false;
-			PlayerPrefs.SetInt("Player", Player.GetComponent<PlayerScore>().Score);
+			PlayerPrefs.SetInt("PlayerScore", Player.GetComponent<PlayerScore>().Score);
 			Application.LoadLevel("scoreScreen");
 			//Application.Quit();
 		}
