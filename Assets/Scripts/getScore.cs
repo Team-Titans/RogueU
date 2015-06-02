@@ -4,15 +4,15 @@ using UnityEngine.UI;
 
 public class getScore : MonoBehaviour {
 
-    public Text charText;
-
+    public Text t;
 	// Use this for initialization
 	void Start () {
-        //charText.text = "10000";
+        t = GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	    
+        //t.text = "its over 9000";
+        t.text = PlayerPrefs.GetInt("finalScore").ToString();
 	}
 }

@@ -5,9 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/testGrid.unity
   - enabled: 1
-    path: Assets/Scenes/scoreScreen.unity
+    path: Assets/Scenes/main_menu.unity
   - enabled: 1
+    path: Assets/Scenes/MasterLoop.unity
+  - enabled: 1
+    path: Assets/Scenes/scoreScreen.unity
+  - enabled: 0
     path: Assets/Scenes/main_menu.unity

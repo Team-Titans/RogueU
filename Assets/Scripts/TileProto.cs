@@ -18,7 +18,6 @@ public class TileProto : MonoBehaviour
         // when player dies go to scoreScreen scene
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            // not working yet
             Application.LoadLevel("scoreScreen");
         }
 	}
