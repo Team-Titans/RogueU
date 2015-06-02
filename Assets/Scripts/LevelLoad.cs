@@ -23,6 +23,7 @@ public class LevelLoad : MonoBehaviour {
 	void Awake()
 	{
 		OnLevelLoad += LoadNext;
+		PlayerPrefs.SetInt("PlayerLevel", currentLevel);
 	}
 
 	// Use this for initialization
@@ -134,6 +135,7 @@ public class LevelLoad : MonoBehaviour {
 		ClearGoldStairs();
 		LoadStairs();
 		currentLevel++;
+		PlayerPrefs.SetInt("PlayerLevel", currentLevel);
 		totalGold = 0;
 		LoadGold();
 		ResetEnemy();
