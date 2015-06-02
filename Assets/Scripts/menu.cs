@@ -17,7 +17,7 @@ public class menu : MonoBehaviour
 	{
 		if (NameField.text != "")
 		{
-			PlayerPrefs.SetString("Player", NameField.text);
+			PlayerPrefs.SetString("PlayerName", NameField.text);
 			Application.LoadLevel("GameLoop");
 			Debug.Log("Level Loading");
 		}
@@ -25,7 +25,7 @@ public class menu : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Escape))
 		{
 			PlayerPrefs.DeleteAll();
 		}
