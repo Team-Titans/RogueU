@@ -1,20 +1,22 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using System.Collections;
 
 public class menu : MonoBehaviour {
 
     public Text playerName;
+    public Button StartButton;
+    public Button QuitButton;
+
 	// Use this for initialization
 	void Start () {
-        //playerName = new Text();
         playerName = GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         playerName = GetComponent<Text>();
-        
 
 	    if(Input.GetKeyDown(KeyCode.Return))
         {
