@@ -10,7 +10,7 @@ public class menu : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		
+		//Screen.SetResolution(1024)
 	}
 	
 	public void ChangeLevel()
@@ -20,6 +20,11 @@ public class menu : MonoBehaviour
 			PlayerPrefs.SetString("PlayerName", NameField.text);
 			Application.LoadLevel("GameLoop");
 			Debug.Log("Level Loading");
+		}
+		else
+		{
+			PlayerPrefs.SetString("PlayerName", "Rogue");
+			Application.LoadLevel("GameLoop");
 		}
 	}
 
@@ -31,11 +36,6 @@ public class menu : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-        if (Input.GetKeyDown(KeyCode.Escape))
-		{
-			PlayerPrefs.DeleteAll();
-		}
-
 	    if(Input.GetKeyDown(KeyCode.Return))
         {
 			ChangeLevel();
