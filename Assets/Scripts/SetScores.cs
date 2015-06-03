@@ -72,5 +72,9 @@ public class SetScores : MonoBehaviour {
 		{
 			Application.LoadLevel("MainMenu");
 		}
+		if(Input.GetKeyDown(KeyCode.Return))
+		{
+			Application.Quit();
+		}
 	}
 }
