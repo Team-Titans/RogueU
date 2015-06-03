@@ -2,12 +2,21 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class hudScript : MonoBehaviour {
+public class hudScript : MonoBehaviour
+{
 
+	PlayerScore scoreDisp = null;
 	void Start()
 	{
-		PlayerScore scoreDisp = null;
 		scoreDisp = GameObject.FindObjectOfType<PlayerScore>();
+		if (scoreDisp != null)
+		{
+			scoreDisp.OnScoreChanged += UpdateScoreDisplay;
+		}
+	}
+
+	void Update()
+	{
 		if (scoreDisp != null)
 		{
 			scoreDisp.OnScoreChanged += UpdateScoreDisplay;
