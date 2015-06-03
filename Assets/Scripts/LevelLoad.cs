@@ -41,7 +41,6 @@ public class LevelLoad : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		
 	}
 
 	//Loads gold at scene start and

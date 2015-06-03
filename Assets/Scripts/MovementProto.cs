@@ -106,6 +106,7 @@ public class MovementProto : MonoBehaviour
 			else
 			{
 				GridX++;
+                //Debug.Log(GridX);
 			}
 			HasMoved = true;
 		}
