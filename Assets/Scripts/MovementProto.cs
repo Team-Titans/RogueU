@@ -179,6 +179,8 @@ public class MovementProto : MonoBehaviour
 			if (Health < maxHealth)
 			{
 				Health += 2;
+				if (Health > maxHealth)
+					Health = maxHealth;
 			}
 
 			//Load level script and start level
