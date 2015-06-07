@@ -44,12 +44,37 @@ public class MovementProto : MonoBehaviour
 		}
 	}
 
+	//Changes to Attack Power
+	public delegate void dAttackChanged(int num);
+	public dAttackChanged OnAttackChanged;
+
+	//Get Set Attack Power
+	private int _attackPower;
+	public int AttackPower
+	{
+		get { return _attackPower; }
+		set
+		{
+			if (_attackPower != value)
+			{
+				_attackPower = value;
+				if (OnAttackChanged != null)
+				{
+					OnAttackChanged(_attackPower);
+				}
+			}
+		}
+	}
+
 
 	// Use this for initialization
 	void Start ()
 	{
+		//Initial Player values
 		isAlive = true;
 		Health = 20;
+		AttackPower = 7;
+
 		//Default values, change these to wherever this needs to spawn
 		HasMoved = false;
 		GridX = 0.5f;
@@ -73,7 +98,7 @@ public class MovementProto : MonoBehaviour
 	void Attack()
 	{
 		// Subtract health from enemy
-		Enemy.GetComponent<EnemyProto>().Health -= 7;
+		Enemy.GetComponent<EnemyProto>().Health -= AttackPower;
 		Debug.Log("PLAYER ATTACK");
 		if (Enemy.GetComponent<EnemyProto>().Health < 1)
 		{
@@ -170,7 +195,7 @@ public class MovementProto : MonoBehaviour
 			}
 		}
 
-		if (col.tag == "stairs")
+		if (col.gameObject.tag == "stairs")
 		{
 			Debug.Log("player climbed stairs");
 
@@ -190,6 +215,14 @@ public class MovementProto : MonoBehaviour
 			{
 				loadLevel.OnLevelLoad();
 			}
+		}
+
+		if (col.gameObject.tag == "sword")
+		{
+			Debug.Log("Picked up a sword! Swing it!");
+			//Attack Power Up!
+			AttackPower += 3;
+			Destroy(col.gameObject);
 		}
 	}
 }

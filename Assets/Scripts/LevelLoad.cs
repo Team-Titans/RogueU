@@ -13,6 +13,7 @@ public class LevelLoad : MonoBehaviour {
 	public GameObject enemy;
 	public GameObject player;
 	public GameObject stairs;
+	public GameObject sword;
 
 	//TODO: Restore some health per level
 
@@ -102,9 +103,11 @@ public class LevelLoad : MonoBehaviour {
 		}
 	}
 
-	void LoadPlayer()
+	void LoadSword()
 	{
-		
+		GameObject newSword;
+		newSword = Instantiate(sword);
+		newSword.transform.SetParent(gameObject.transform);
 
 	}
 
@@ -135,6 +138,10 @@ public class LevelLoad : MonoBehaviour {
 		ClearGoldStairs();
 		LoadStairs();
 		currentLevel++;
+		if (currentLevel % 5 == 0)
+		{
+			LoadSword();
+		}
 		PlayerPrefs.SetInt("PlayerLevel", currentLevel);
 		totalGold = 0;
 		LoadGold();
