@@ -109,7 +109,7 @@ public class MovementProto : MonoBehaviour
 	{
 		// Subtract health from enemy
 		enemy.Health -= AttackPower;
-		Debug.Log("PLAYER ATTACK");
+		//debug.log("PLAYER ATTACK");
 		if (enemy.Health < 1)
 		{
 			//PUT ENEMY DEATH LOGIC HERE
@@ -122,7 +122,7 @@ public class MovementProto : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.K))
 		{
-			Debug.Log("SUICIDE WOULD BE NICE AND NEAT");
+			//debug.log("SUICIDE WOULD BE NICE AND NEAT");
 			for (int i = 0; i < 10; i++)
 			{
 				enemy.Attack();
@@ -189,7 +189,7 @@ public class MovementProto : MonoBehaviour
 		//Pickup Gold on Collision + Add Score
 		if (col.gameObject.tag == "Gold")
 		{
-			Debug.Log("He touched the gold!");
+			//debug.log("He touched the gold!");
 			Destroy(col.gameObject);
 
 			if (loaded != null)
@@ -205,7 +205,7 @@ public class MovementProto : MonoBehaviour
 
 		else if (col.gameObject.tag == "stairs")
 		{
-			Debug.Log("player climbed stairs");
+			//debug.log("player climbed stairs");
 
 			//Restore some health and 1 to max health
 			maxHealth += 1;
@@ -226,7 +226,7 @@ public class MovementProto : MonoBehaviour
 
 		else if (col.gameObject.tag == "sword")
 		{
-			Debug.Log("Picked up a sword! Swing it!");
+			//debug.log("Picked up a sword! Swing it!");
 			//Attack Power Up!
 			AttackPower += 3;
 			Destroy(col.gameObject);

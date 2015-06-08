@@ -99,7 +99,7 @@ public class LevelLoad : MonoBehaviour {
 		}
 		else
 		{
-			Debug.Log("YA FUCKED UP");
+			//debug.log("YA FUCKED UP");
 		}
 	}
 

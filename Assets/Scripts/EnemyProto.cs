@@ -89,7 +89,7 @@ public class EnemyProto : MonoBehaviour {
 
 	public void Reset()
 	{
-		Debug.Log("ENEMY RESET");
+		//debug.log("ENEMY RESET");
 		Health = 20;
 		isAlive = true;		//Default values, change these to wherever this needs to spawn
 		GridX = Random.Range(0, 15) - 7;
@@ -121,7 +121,7 @@ public class EnemyProto : MonoBehaviour {
 	public void IsKill()
 	{
 		isAlive = false;
-		Debug.Log("ENEMY IS DEAD");
+		//debug.log("ENEMY IS DEAD");
 		GridX += 100000;
 		GridY += 100000;
 	}
@@ -131,11 +131,11 @@ public class EnemyProto : MonoBehaviour {
 		//Subtracts health
 		player.Health -= 3;
 
-		Debug.Log("ENEMY ATTACK");
+		//debug.log("ENEMY ATTACK");
 		if (player.Health < 1)
 		{
 			//PLAYER IS DEAD LOGIC GOES HERE (to console, isalive, loadlevel)
-			Debug.Log("PLAYER IS DEAD");
+			//debug.log("PLAYER IS DEAD");
 			player.isAlive = false;
 			PlayerPrefs.SetInt("PlayerScore", Player.GetComponent<PlayerScore>().Score);
 			Application.LoadLevel("scoreScreen");
@@ -155,7 +155,7 @@ public class EnemyProto : MonoBehaviour {
 				{
 					player.HasMoved = false;
 					//PUT ENEMY TURN LOGIC HERE
-					Debug.Log("ENEMY TURN");
+					//debug.log("ENEMY TURN");
 
 					if (Mathf.Abs(player.GridX - GridX) > Mathf.Abs(player.GridY - GridY))
 					{
