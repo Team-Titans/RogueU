@@ -13,11 +13,16 @@ public class lighting : MonoBehaviour {
 
         // get blackbox's child == smileman
        // CarbonToFollow.name("smileman").GetComponentInChildren<GameObject>();
+        CarbonToFollow = GameObject.Find("smileman(Clone)");
+        //CarbonToFollow = (GameObject) Instantiate(Resources.Load("smileman"), Vector3.zero, Quaternion.identity);
         player = CarbonToFollow.GetComponentInChildren<GameObject>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+
+        this.transform.LookAt(CarbonToFollow.transform.position);
 
         // levelLoad.cs instantiates a clone of the prefab smileman
         // access clone and you will get the position
