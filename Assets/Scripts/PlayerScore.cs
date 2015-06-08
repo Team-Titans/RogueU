@@ -30,7 +30,7 @@ public class PlayerScore : MonoBehaviour {
 
 	public void LogScore(int score)
 	{
-		Debug.Log("The score is: " + score.ToString());
+		//Debug.Log("The score is: " + score.ToString());
 	}
 
 }
