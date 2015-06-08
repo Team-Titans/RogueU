@@ -26,6 +26,11 @@ public class MovementProto : MonoBehaviour
 	public dHealthChanged OnHealthChanged;
 	public int maxHealth = 20;
 
+	//Comp
+	EnemyProto enemy;
+	LevelLoad loaded;
+	PlayerScore scoreDisp;
+
 	//Get Set HP
 	private int _health;
 	public int Health
@@ -44,12 +49,42 @@ public class MovementProto : MonoBehaviour
 		}
 	}
 
+	//Changes to Attack Power
+	public delegate void dAttackChanged(int num);
+	public dAttackChanged OnAttackChanged;
+
+	//Get Set Attack Power
+	private int _attackPower;
+	public int AttackPower
+	{
+		get { return _attackPower; }
+		set
+		{
+			if (_attackPower != value)
+			{
+				_attackPower = value;
+				if (OnAttackChanged != null)
+				{
+					OnAttackChanged(_attackPower);
+				}
+			}
+		}
+	}
+
 
 	// Use this for initialization
 	void Start ()
 	{
+		//Comps
+		enemy = Enemy.GetComponent<EnemyProto>();
+		loaded = GetComponentInParent<LevelLoad>();
+		scoreDisp = GameObject.FindObjectOfType<PlayerScore>();
+
+		//Initial Player values
 		isAlive = true;
 		Health = 20;
+		AttackPower = 7;
+
 		//Default values, change these to wherever this needs to spawn
 		HasMoved = false;
 		GridX = 0.5f;
@@ -73,12 +108,12 @@ public class MovementProto : MonoBehaviour
 	void Attack()
 	{
 		// Subtract health from enemy
-		Enemy.GetComponent<EnemyProto>().Health -= 7;
-		Debug.Log("PLAYER ATTACK");
-		if (Enemy.GetComponent<EnemyProto>().Health < 1)
+		enemy.Health -= AttackPower;
+		//debug.log("PLAYER ATTACK");
+		if (enemy.Health < 1)
 		{
 			//PUT ENEMY DEATH LOGIC HERE
-			Enemy.GetComponent<EnemyProto>().IsKill();
+			enemy.IsKill();
 			//Application.Quit();
 		}
 	}
@@ -87,10 +122,10 @@ public class MovementProto : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.K))
 		{
-			Debug.Log("SUICIDE WOULD BE NICE AND NEAT");
+			//debug.log("SUICIDE WOULD BE NICE AND NEAT");
 			for (int i = 0; i < 10; i++)
 			{
-				Enemy.GetComponent<EnemyProto>().Attack();
+				enemy.Attack();
 			}
 		}
 		if (Input.GetKeyDown(KeyCode.Space))
@@ -99,7 +134,7 @@ public class MovementProto : MonoBehaviour
 		}
 		if (Input.GetKeyDown(KeyCode.RightArrow) && GridX < GridXMax)
 		{
-			if (GridX + 1 == Enemy.GetComponent<EnemyProto>().GridX && GridY == Enemy.GetComponent<EnemyProto>().GridY)
+			if (GridX + 1 == enemy.GridX && GridY == enemy.GridY)
 			{
 				Attack();
 			}
@@ -111,7 +146,7 @@ public class MovementProto : MonoBehaviour
 		}
 		else if (Input.GetKeyDown(KeyCode.LeftArrow) && GridX > GridXMin)
 		{
-			if (GridX - 1 == Enemy.GetComponent<EnemyProto>().GridX && GridY == Enemy.GetComponent<EnemyProto>().GridY)
+			if (GridX - 1 == enemy.GridX && GridY == enemy.GridY)
 			{
 				Attack();
 			}
@@ -123,7 +158,7 @@ public class MovementProto : MonoBehaviour
 		}
 		else if (Input.GetKeyDown(KeyCode.UpArrow) && GridY < GridYMax)
 		{
-			if (GridY + 1 == Enemy.GetComponent<EnemyProto>().GridY && GridX == Enemy.GetComponent<EnemyProto>().GridX)
+			if (GridY + 1 == enemy.GridY && GridX == enemy.GridX)
 			{
 				Attack();
 			}
@@ -136,7 +171,7 @@ public class MovementProto : MonoBehaviour
 
 		else if (Input.GetKeyDown(KeyCode.DownArrow) && GridY > GridXMin)
 		{
-			if (GridY - 1 == Enemy.GetComponent<EnemyProto>().GridY && GridX == Enemy.GetComponent<EnemyProto>().GridX)
+			if (GridY - 1 == enemy.GridY && GridX == enemy.GridX)
 			{
 				Attack();
 			}
@@ -154,14 +189,12 @@ public class MovementProto : MonoBehaviour
 		//Pickup Gold on Collision + Add Score
 		if (col.gameObject.tag == "Gold")
 		{
-			Debug.Log("He touched the gold!");
+			//debug.log("He touched the gold!");
 			Destroy(col.gameObject);
 
-			LevelLoad loaded = GetComponentInParent<LevelLoad>();
 			if (loaded != null)
 			{
 				loaded.totalGold--;
-				PlayerScore scoreDisp = GameObject.FindObjectOfType<PlayerScore>();
 
 				if (scoreDisp != null)
 				{
@@ -170,9 +203,9 @@ public class MovementProto : MonoBehaviour
 			}
 		}
 
-		if (col.tag == "stairs")
+		else if (col.gameObject.tag == "stairs")
 		{
-			Debug.Log("player climbed stairs");
+			//debug.log("player climbed stairs");
 
 			//Restore some health and 1 to max health
 			maxHealth += 1;
@@ -184,12 +217,19 @@ public class MovementProto : MonoBehaviour
 			}
 
 			//Load level script and start level
-			LevelLoad loadLevel = null;
-			loadLevel = GameObject.FindObjectOfType<LevelLoad>();
+			LevelLoad loadLevel =  GameObject.FindObjectOfType<LevelLoad>();
 			if (loadLevel != null)
 			{
 				loadLevel.OnLevelLoad();
 			}
+		}
+
+		else if (col.gameObject.tag == "sword")
+		{
+			//debug.log("Picked up a sword! Swing it!");
+			//Attack Power Up!
+			AttackPower += 3;
+			Destroy(col.gameObject);
 		}
 	}
 }

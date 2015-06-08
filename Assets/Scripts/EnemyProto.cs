@@ -13,12 +13,19 @@ public class EnemyProto : MonoBehaviour {
 	public GameObject Player;
 	private bool firstTurn = true;
 	public bool isAlive;
+
+	private MovementProto player;
+
 	// Use this for initialization
 	void Start ()
 	{
 		Health = 20;
 		isAlive = true;		//Default values, change these to wherever this needs to spawn
 		GridX = Random.Range(0, 15) - 7;
+
+		//Comp
+		player = Player.GetComponent<MovementProto>();
+
 		if (GridX < 0)
 		{
 			GridX -= .5f;
@@ -41,7 +48,7 @@ public class EnemyProto : MonoBehaviour {
 		TileH = transform.localScale.y;
 
 		//Check conflicting position / randomize Y
-		while (GridY == Player.GetComponent<MovementProto>().GridY)
+		while (GridY == player.GridY)
 		{
 			GridY = Random.Range(0, 15) - 7;
 			if (GridY < 0)
@@ -55,7 +62,7 @@ public class EnemyProto : MonoBehaviour {
 		}
 
 		//Set position
-		transform.position = new Vector3(GridX, GridY, -3);
+		transform.position = new Vector3(GridX, GridY, -4);
 		
 	}
 	bool IsBeside(float tX, float tY, float uX, float uY)
@@ -82,7 +89,7 @@ public class EnemyProto : MonoBehaviour {
 
 	public void Reset()
 	{
-		Debug.Log("ENEMY RESET");
+		//debug.log("ENEMY RESET");
 		Health = 20;
 		isAlive = true;		//Default values, change these to wherever this needs to spawn
 		GridX = Random.Range(0, 15) - 7;
@@ -108,13 +115,13 @@ public class EnemyProto : MonoBehaviour {
 		TileH = transform.localScale.y;
 
 		//Set position
-		transform.position = new Vector3(GridX, GridY, -3);
+		transform.position = new Vector3(GridX, GridY, -4);
 	}
 
 	public void IsKill()
 	{
 		isAlive = false;
-		Debug.Log("ENEMY IS DEAD");
+		//debug.log("ENEMY IS DEAD");
 		GridX += 100000;
 		GridY += 100000;
 	}
@@ -122,14 +129,14 @@ public class EnemyProto : MonoBehaviour {
 	public void Attack()
 	{
 		//Subtracts health
-		Player.GetComponent<MovementProto>().Health -= 3;
+		player.Health -= 3;
 
-		Debug.Log("ENEMY ATTACK");
-		if (Player.GetComponent<MovementProto>().Health < 1)
+		//debug.log("ENEMY ATTACK");
+		if (player.Health < 1)
 		{
 			//PLAYER IS DEAD LOGIC GOES HERE (to console, isalive, loadlevel)
-			Debug.Log("PLAYER IS DEAD");
-			Player.GetComponent<MovementProto>().isAlive = false;
+			//debug.log("PLAYER IS DEAD");
+			player.isAlive = false;
 			PlayerPrefs.SetInt("PlayerScore", Player.GetComponent<PlayerScore>().Score);
 			Application.LoadLevel("scoreScreen");
 			//Application.Quit();
@@ -144,15 +151,15 @@ public class EnemyProto : MonoBehaviour {
 		{
 			if (isAlive)
 			{
-				if (Player.GetComponent<MovementProto>().HasMoved && !IsBeside(GridX, GridY, Player.GetComponent<MovementProto>().GridX, Player.GetComponent<MovementProto>().GridY))
+				if (player.HasMoved && !IsBeside(GridX, GridY, player.GridX, player.GridY))
 				{
-					Player.GetComponent<MovementProto>().HasMoved = false;
+					player.HasMoved = false;
 					//PUT ENEMY TURN LOGIC HERE
-					Debug.Log("ENEMY TURN");
+					//debug.log("ENEMY TURN");
 
-					if (Mathf.Abs(Player.GetComponent<MovementProto>().GridX - GridX) > Mathf.Abs(Player.GetComponent<MovementProto>().GridY - GridY))
+					if (Mathf.Abs(player.GridX - GridX) > Mathf.Abs(player.GridY - GridY))
 					{
-						if (GridX >= Player.GetComponent<MovementProto>().GridX)
+						if (GridX >= player.GridX)
 						{
 							GridX--;
 						}
@@ -163,7 +170,7 @@ public class EnemyProto : MonoBehaviour {
 					}
 					else
 					{
-						if (GridY >= Player.GetComponent<MovementProto>().GridY)
+						if (GridY >= player.GridY)
 						{
 							GridY--;
 						}
@@ -173,9 +180,9 @@ public class EnemyProto : MonoBehaviour {
 						}
 					}
 				}
-				else if (Player.GetComponent<MovementProto>().HasMoved)
+				else if (player.HasMoved)
 				{
-					Player.GetComponent<MovementProto>().HasMoved = false;
+					player.HasMoved = false;
 					Attack();
 				}
 			}

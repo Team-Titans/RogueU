@@ -722,7 +722,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score:'
+  m_Text: 'Score: 0'
 --- !u!222 &1607780399
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -874,6 +874,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11421916, guid: 139d8f12d6a49be439b69cf9a35c79e3, type: 2}
+      propertyPath: sword
+      value: 
+      objectReference: {fileID: 166440, guid: e083d3b7c6d5bdc40a66f5181e7ec1a9, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 139d8f12d6a49be439b69cf9a35c79e3, type: 2}
   m_IsPrefabParent: 0

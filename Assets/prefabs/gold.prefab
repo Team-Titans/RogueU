@@ -9,8 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 417386}
   - 212: {fileID: 21251480}
-  - 61: {fileID: 6163166}
   - 114: {fileID: 11451904}
+  - 58: {fileID: 5888340}
   m_Layer: 0
   m_Name: gold
   m_TagString: Gold
@@ -26,12 +26,12 @@ Transform:
   m_GameObject: {fileID: 120808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -.981000006, y: .0900000036, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!61 &6163166
-BoxCollider2D:
+--- !u!58 &5888340
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -42,7 +42,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: .5, y: .5}
+  m_Radius: .300000012
 --- !u!114 &11451904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,7 +54,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d94a6716fc15fb947a9e4b7fa43c2661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveBox: {fileID: 0}
   GridX: 0
   GridY: 0
 --- !u!212 &21251480
@@ -81,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c53ddfa3c80582f4b8fe76f9332cb955, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 308e67e48970e1a4dbd04f7b9e8ea986, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

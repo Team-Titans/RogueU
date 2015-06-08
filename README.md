@@ -1,11 +1,10 @@
 # RogueU
-Welcome to RogueU! A roguelike built in Unity.
+Welcome to RogueU! A RogueLike built in Unity.
 
-You are a Rogue making your way through the local dungeon. Floor by floor you will encountor monsters that will seek to remove you from this world. Collect gold and see how far you can go!
+You are a stray adventurer making your way through a deep, dark dungeon. You will move deeper into the dungeon, floor by floor, and fight slimes while collecting gold. There is no true end to your quest, there is only death and the legacy you leave behind. You are ROGUE!
 
 # Overview
-In RogueU, you move about the dungeon collecting gold by passing over it while fighting off monsters. Collecting gold increases your score try and get it as high as possible to make it on the highscore board. The game is turn based so every time you move, the monster will move as well. Should you choose to fight the monster, move into it! Combat will take place and the monster will take a swing back at you. Once you've had enough of the current floor, make your way to the stairs to head deeper into the dungeon. Rinse and repeat!
-
+You wake in a dungeon, trapped in a room with a singular slime, a staircase downwards, and treasure strewn about the room for the taking. The deeper you go, the more treasure you find. The only thing you know is that you want more gold, and the only way to get more gold is to travel deeper into the dungeon. The slime will hunt you down and attack you, so you must choose between fight or flight.  You gain a slight health boost and regeneration after each floor, so conserve your strength.
 
 # Controls
 Arrow Keys : Movement

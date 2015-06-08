@@ -30,6 +30,6 @@ public class hudScript : MonoBehaviour
 		{
 			temp.text = "Score: " + score.ToString();
 		}
-        PlayerPrefs.SetInt("finalScore", score);
+        //PlayerPrefs.SetInt("finalScore", score);
 	}
 }
