@@ -26,6 +26,11 @@ public class MovementProto : MonoBehaviour
 	public dHealthChanged OnHealthChanged;
 	public int maxHealth = 20;
 
+	//Comp
+	EnemyProto enemy;
+	LevelLoad loaded;
+	PlayerScore scoreDisp;
+
 	//Get Set HP
 	private int _health;
 	public int Health
@@ -70,6 +75,11 @@ public class MovementProto : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		//Comps
+		enemy = Enemy.GetComponent<EnemyProto>();
+		loaded = GetComponentInParent<LevelLoad>();
+		scoreDisp = GameObject.FindObjectOfType<PlayerScore>();
+
 		//Initial Player values
 		isAlive = true;
 		Health = 20;
@@ -98,12 +108,12 @@ public class MovementProto : MonoBehaviour
 	void Attack()
 	{
 		// Subtract health from enemy
-		Enemy.GetComponent<EnemyProto>().Health -= AttackPower;
+		enemy.Health -= AttackPower;
 		Debug.Log("PLAYER ATTACK");
-		if (Enemy.GetComponent<EnemyProto>().Health < 1)
+		if (enemy.Health < 1)
 		{
 			//PUT ENEMY DEATH LOGIC HERE
-			Enemy.GetComponent<EnemyProto>().IsKill();
+			enemy.IsKill();
 			//Application.Quit();
 		}
 	}
@@ -115,7 +125,7 @@ public class MovementProto : MonoBehaviour
 			Debug.Log("SUICIDE WOULD BE NICE AND NEAT");
 			for (int i = 0; i < 10; i++)
 			{
-				Enemy.GetComponent<EnemyProto>().Attack();
+				enemy.Attack();
 			}
 		}
 		if (Input.GetKeyDown(KeyCode.Space))
@@ -124,7 +134,7 @@ public class MovementProto : MonoBehaviour
 		}
 		if (Input.GetKeyDown(KeyCode.RightArrow) && GridX < GridXMax)
 		{
-			if (GridX + 1 == Enemy.GetComponent<EnemyProto>().GridX && GridY == Enemy.GetComponent<EnemyProto>().GridY)
+			if (GridX + 1 == enemy.GridX && GridY == enemy.GridY)
 			{
 				Attack();
 			}
@@ -136,7 +146,7 @@ public class MovementProto : MonoBehaviour
 		}
 		else if (Input.GetKeyDown(KeyCode.LeftArrow) && GridX > GridXMin)
 		{
-			if (GridX - 1 == Enemy.GetComponent<EnemyProto>().GridX && GridY == Enemy.GetComponent<EnemyProto>().GridY)
+			if (GridX - 1 == enemy.GridX && GridY == enemy.GridY)
 			{
 				Attack();
 			}
@@ -148,7 +158,7 @@ public class MovementProto : MonoBehaviour
 		}
 		else if (Input.GetKeyDown(KeyCode.UpArrow) && GridY < GridYMax)
 		{
-			if (GridY + 1 == Enemy.GetComponent<EnemyProto>().GridY && GridX == Enemy.GetComponent<EnemyProto>().GridX)
+			if (GridY + 1 == enemy.GridY && GridX == enemy.GridX)
 			{
 				Attack();
 			}
@@ -161,7 +171,7 @@ public class MovementProto : MonoBehaviour
 
 		else if (Input.GetKeyDown(KeyCode.DownArrow) && GridY > GridXMin)
 		{
-			if (GridY - 1 == Enemy.GetComponent<EnemyProto>().GridY && GridX == Enemy.GetComponent<EnemyProto>().GridX)
+			if (GridY - 1 == enemy.GridY && GridX == enemy.GridX)
 			{
 				Attack();
 			}
@@ -182,11 +192,9 @@ public class MovementProto : MonoBehaviour
 			Debug.Log("He touched the gold!");
 			Destroy(col.gameObject);
 
-			LevelLoad loaded = GetComponentInParent<LevelLoad>();
 			if (loaded != null)
 			{
 				loaded.totalGold--;
-				PlayerScore scoreDisp = GameObject.FindObjectOfType<PlayerScore>();
 
 				if (scoreDisp != null)
 				{
@@ -195,7 +203,7 @@ public class MovementProto : MonoBehaviour
 			}
 		}
 
-		if (col.gameObject.tag == "stairs")
+		else if (col.gameObject.tag == "stairs")
 		{
 			Debug.Log("player climbed stairs");
 
@@ -209,15 +217,14 @@ public class MovementProto : MonoBehaviour
 			}
 
 			//Load level script and start level
-			LevelLoad loadLevel = null;
-			loadLevel = GameObject.FindObjectOfType<LevelLoad>();
+			LevelLoad loadLevel =  GameObject.FindObjectOfType<LevelLoad>();
 			if (loadLevel != null)
 			{
 				loadLevel.OnLevelLoad();
 			}
 		}
 
-		if (col.gameObject.tag == "sword")
+		else if (col.gameObject.tag == "sword")
 		{
 			Debug.Log("Picked up a sword! Swing it!");
 			//Attack Power Up!
