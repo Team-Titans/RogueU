@@ -7,41 +7,22 @@ public class GoldProto : MonoBehaviour
 	public float GridX;
 	public float GridY;
 
+	//Comps
+	stairsScript stairs;
+
 	// Use this for initialization
 	void Start()
 	{
+		//Comps
+		stairs = FindObjectOfType<stairsScript>();
+
 		//Default values, change these to wherever this needs to spawn
-		GridX = Random.Range(0,15) - 7;
-		if (GridX < 0)
-		{
-			GridX -= .5f;
-		}
-		else
-		{
-			GridX += .5f;
-		}
-		GridY = Random.Range(0,15) - 7;
-		if (GridY < 0)
-		{
-			GridY -= .5f;
-		}
-		else
-		{
-			GridY += .5f;
-		}
+		RandomXY();
 
 		//If gold spawns on the same X as stairs random it
-		while (GridX == FindObjectOfType<stairsScript>().GridX)
+		while ((GridX == stairs.GridX && GridY == stairs.GridY))
 		{
-			GridX = Random.Range(0, 15) - 7;
-			if (GridX < 0)
-			{
-				GridX -= .5f;
-			}
-			else
-			{
-				GridX += .5f;
-			}
+			RandomXY();
 		}
 
 		//Set position
@@ -52,5 +33,27 @@ public class GoldProto : MonoBehaviour
 	void Update()
 	{
 		
+	}
+	void RandomXY()
+	{
+		//Default values, change these to wherever this needs to spawn
+		GridX = Random.Range(0, 15) - 7;
+		if (GridX < 0)
+		{
+			GridX -= .5f;
+		}
+		else
+		{
+			GridX += .5f;
+		}
+		GridY = Random.Range(0, 15) - 7;
+		if (GridY < 0)
+		{
+			GridY -= .5f;
+		}
+		else
+		{
+			GridY += .5f;
+		}
 	}
 }
