@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 487108}
   - 212: {fileID: 21263500}
   - 114: {fileID: 11428710}
+  - 50: {fileID: 5011080}
   m_Layer: 0
   m_Name: frownman
   m_TagString: Untagged
@@ -29,6 +30,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5011080
+Rigidbody2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142744}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_FixedAngle: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!114 &11428710
 MonoBehaviour:
   m_ObjectHideFlags: 1
