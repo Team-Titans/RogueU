@@ -9,8 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 417386}
   - 212: {fileID: 21251480}
-  - 61: {fileID: 6163166}
   - 114: {fileID: 11451904}
+  - 58: {fileID: 5888340}
   m_Layer: 0
   m_Name: gold
   m_TagString: Gold
@@ -30,8 +30,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!61 &6163166
-BoxCollider2D:
+--- !u!58 &5888340
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -42,7 +42,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: .5, y: .5}
+  m_Radius: .0500000007
 --- !u!114 &11451904
 MonoBehaviour:
   m_ObjectHideFlags: 1

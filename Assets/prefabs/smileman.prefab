@@ -10,9 +10,9 @@ GameObject:
   - 4: {fileID: 423312}
   - 212: {fileID: 21237718}
   - 114: {fileID: 11430130}
-  - 61: {fileID: 6147280}
   - 114: {fileID: 11420872}
   - 50: {fileID: 5095274}
+  - 58: {fileID: 5809230}
   m_Layer: 0
   m_Name: smileman
   m_TagString: Untagged
@@ -47,19 +47,19 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &6147280
-BoxCollider2D:
+--- !u!58 &5809230
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110434}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1.00999999, y: 1.00999999}
+  m_Radius: .200000003
 --- !u!114 &11420872
 MonoBehaviour:
   m_ObjectHideFlags: 1
