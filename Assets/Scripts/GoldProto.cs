@@ -19,7 +19,7 @@ public class GoldProto : MonoBehaviour
 		//Default values, change these to wherever this needs to spawn
 		RandomXY();
 
-		//If gold spawns on the same X as stairs random it
+		//If gold spawns on the same X,Y as stairs randomize it again
 		while ((GridX == stairs.GridX && GridY == stairs.GridY))
 		{
 			RandomXY();
@@ -38,7 +38,18 @@ public class GoldProto : MonoBehaviour
 	{
 		//Default values, change these to wherever this needs to spawn
 		GridX = Random.Range(0, 15) - 7;
-		if (GridX < 0)
+		if (GridX == 0)
+		{
+			if (Random.Range(0, 2) == 0)
+			{
+				GridX += .5f;
+			}
+			else
+			{
+				GridX -= .5f;
+			}
+		}
+		else if (GridX < 0)
 		{
 			GridX -= .5f;
 		}
@@ -46,8 +57,21 @@ public class GoldProto : MonoBehaviour
 		{
 			GridX += .5f;
 		}
+
+		//Random Y on Grid
 		GridY = Random.Range(0, 15) - 7;
-		if (GridY < 0)
+		if (GridY == 0)
+		{
+			if (Random.Range(0, 2) == 0)
+			{
+				GridY += .5f;
+			}
+			else
+			{
+				GridY -= .5f;
+			}
+		}
+		else if (GridY < 0)
 		{
 			GridY -= .5f;
 		}
@@ -55,5 +79,7 @@ public class GoldProto : MonoBehaviour
 		{
 			GridY += .5f;
 		}
+
+		
 	}
 }
