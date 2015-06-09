@@ -124,7 +124,7 @@ public class LevelLoad : MonoBehaviour {
 	{
 		for (int i = 0; i < gameObject.transform.childCount; i++)
 		{
-			if (gameObject.transform.GetChild(i).tag == "Gold" || gameObject.transform.GetChild(i).tag == "stairs")
+			if (gameObject.transform.GetChild(i).tag == "Gold" || gameObject.transform.GetChild(i).tag == "stairs" || gameObject.transform.GetChild(i).tag == "sword")
 			Destroy(gameObject.transform.GetChild(i).gameObject);
 		}
 	}
