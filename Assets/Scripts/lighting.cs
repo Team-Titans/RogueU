@@ -11,12 +11,17 @@ public class lighting : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        trans = CarbonToFollow.transform.GetChild(1);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (trans == null)
+        {
+            trans = CarbonToFollow.transform.Find("smileman(Clone)");
+        }
+   
         DirLight.transform.position = new Vector3(trans.position.x, trans.position.y, -15);
         //Debug.Log(CarbonToFollow.transform.position.x + "," + CarbonToFollow.transform.position.y);
     }
