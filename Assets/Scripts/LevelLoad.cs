@@ -24,7 +24,7 @@ public class LevelLoad : MonoBehaviour {
 	void Awake()
 	{
 		OnLevelLoad += LoadNext;
-		PlayerPrefs.SetInt("PlayerLevel", currentLevel);
+		//PlayerPrefs.SetInt("PlayerLevel", currentLevel);
 	}
 
 	// Use this for initialization
